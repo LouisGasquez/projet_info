@@ -1,7 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-
+import matplotlib.pyplot as plt 
+import numpy as np
+import math
 
 ##
 projet=pd.read_csv('EIVP_KM.csv',sep=';',index_col='sent_at',parse_dates=True)
@@ -23,9 +25,22 @@ def moyenne(liste):
 
 
 
-##Partie 2 - Impplémenter les données du tableau csv
+##Partie 2 - Implémenter les données du tableau csv
 
 # le mieux ça serait de faire un tableau par dimension utilisée
+def liste_variable_tout(n): 
+    noise=[] 
+    temp=[]
+    humidity=[]
+    lum=[]
+    co2=[]
+    for i in range(7880): 
+            noise.append(projet.noise[i])
+            temp.append(projet.temp[i])
+            humidity.append(projet.humidity[i])
+            lum.append(projet.lum[i])
+            co2.append(projet.co2[i])
+    return noise,temp,humidity,lum,co2
 
 bruit =
 temperature =
@@ -331,6 +346,33 @@ def similitude(data, nb_tas):
     else :
         similitude(data,nb_tas)
 
+        def liste_variable_tout(n): #choisir le capteur
+    noise=[] #créer chaque liste nécessaire
+    temp=[]
+    humidity=[]
+    lum=[]
+    co2=[]
+    for i in range(7880): #nombre d'éléments que l'on a (facile à avoir avec la dataframe avec .shape)
+        if projet.id[i]==n:  #pour avoir les données du capteur choisis
+            noise.append(projet.noise[i])
+            temp.append(projet.temp[i])
+            humidity.append(projet.humidity[i])
+            lum.append(projet.lum[i])
+            co2.append(projet.co2[i])
+    return noise,temp,humidity,lum,co2
+
+projet['simi_noise']=similitude(liste_variable_tout(1)[0],nb_tas)
+projet['simi_temp']=similitude(liste_variable_tout(1)[1],nb_tas)
+projet['simi_humidity']=similitude(liste_variable_tout(1)[2],nb_tas)
+projet['simi_lum']=similitude(liste_variable_tout(1)[3],nb_tas)
+projet['simi_co2']=similitude(liste_variable_tout(1)[],nb_tas)
+
+plt.title("similarités en fonction du temps")
+projet.simi_noise.plot(label='noise')
+projet.simi_temp.plot(label='temp')
+projet.simi_humidity.plot(label='humidity')
+projet.simi_lum.plot(label='lum')
+projet.simi_co2.plot(label='co2')
 
 
 
