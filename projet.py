@@ -202,7 +202,7 @@ def liste_variable(n): #choisir le capteur
     humidity=[]
     lum=[]
     co2=[]
-    for i in range(7880): #nombre d'éléments que l'on a (facile à avoir avec la dataframe avec .shape)
+    for i in range(7880): #nombre d'éléments que l'on a (facile à avoir avec la dataframe et .shape)
         if projet.id[i]==n:  #pour avoir les données du capteur choisis
             noise.append(projet.noise[i])
             temp.append(projet.temp[i])
