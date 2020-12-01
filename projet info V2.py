@@ -346,21 +346,6 @@ def similitude(data, nb_tas):
     else :
         similitude(data,nb_tas)
 
-        def liste_variable_tout(n): #choisir le capteur
-    noise=[] #créer chaque liste nécessaire
-    temp=[]
-    humidity=[]
-    lum=[]
-    co2=[]
-    for i in range(7880): #nombre d'éléments que l'on a (facile à avoir avec la dataframe avec .shape)
-        if projet.id[i]==n:  #pour avoir les données du capteur choisis
-            noise.append(projet.noise[i])
-            temp.append(projet.temp[i])
-            humidity.append(projet.humidity[i])
-            lum.append(projet.lum[i])
-            co2.append(projet.co2[i])
-    return noise,temp,humidity,lum,co2
-
 projet['simi_noise']=similitude(liste_variable_tout(1)[0],nb_tas)
 projet['simi_temp']=similitude(liste_variable_tout(1)[1],nb_tas)
 projet['simi_humidity']=similitude(liste_variable_tout(1)[2],nb_tas)
@@ -373,7 +358,9 @@ projet.simi_temp.plot(label='temp')
 projet.simi_humidity.plot(label='humidity')
 projet.simi_lum.plot(label='lum')
 projet.simi_co2.plot(label='co2')
-
+plt.xlabel('temps')
+plt.legend()
+plt.show()
 
 
 
