@@ -348,7 +348,7 @@ projet['simi_noise']=similitude(liste_variable_tout(1)[0],nb_tas)
 projet['simi_temp']=similitude(liste_variable_tout(1)[1],nb_tas)
 projet['simi_humidity']=similitude(liste_variable_tout(1)[2],nb_tas)
 projet['simi_lum']=similitude(liste_variable_tout(1)[3],nb_tas)
-projet['simi_co2']=similitude(liste_variable_tout(1)[],nb_tas)
+projet['simi_co2']=similitude(liste_variable_tout(1)[4],nb_tas)
 
 plt.title("similarités en fonction du temps")
 projet.simi_noise.plot(label='noise')
